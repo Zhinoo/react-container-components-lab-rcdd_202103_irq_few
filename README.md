@@ -1,3 +1,34 @@
+<<<<<<< HEAD
+=======
+class LatestMovieReviewsContainer extends Component {
+  constructor(){
+    super();
+
+    this.state = {
+      reviews: []
+    }
+  }
+
+
+  componentWillMount(){
+    fetch(URL)
+      .then(resp =>  resp.json)
+      .then(resp => this.setState({ reviews: resp.results }))
+  }
+
+  render(){
+    return(
+      <div className="latest-movie-reviews">
+        <h3>The Latest Reviews:</h3>
+        <MovieReviews reviews={this.state.reviews} />
+      </div>
+    );
+  }
+}
+
+export default LatestMovieReviewsContainer;# React Container Components
+
+>>>>>>> 5098e3976caa6a43035c0462045123c034362999
 ## Overview
 
 In this lab, we will practice building container components. By the end of the

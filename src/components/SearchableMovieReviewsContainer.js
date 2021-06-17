@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import 'isomorphic-fetch';
 import MovieReviews from './MovieReviews'
 
+<<<<<<< HEAD
 const NYT_API_KEY = 'C83SGrCTUhkokFnblKaWs45qHRenEgyW'; // 2021-05-31 KKO generated
 const URL = 'https://api.nytimes.com/svc/movies/v2/reviews/search.json?'
             + `api-key=${NYT_API_KEY}`;
@@ -56,6 +57,36 @@ class SearchableMovieReviewsContainer extends Component {
             </div>
         )
     }
+=======
+const NYT_API_KEY = 'f98593a095b44546bf4073744b540da0';
+const simulate = 'https://api.nytimes.com/svc/movies/v2/reviews/search.json?' + `api-key=${NYT_API_KEY}&query=`;
+
+class SearchableMovieReviewsContainer extends Component {
+  constructor(){
+    super();
+
+    this.state = {
+      searchTerm: '', reviews: []
+    }
+  }
+
+
+  submitEvent(event) {
+    event.preventDefault();
+    fetch(URL.concat(this.state.searchTerm))
+        .then(resp => resp.json())
+        .then(resp => this.setState({ reviews: resp.results }));
+  }
+
+  render(){
+    return(
+      <div className="searchable-movie-reviews">
+        <h3>The Searched Movie Reviews:</h3>
+        <MovieReviews reviews={this.state.reviews} />
+      </div>
+    );
+  }
+>>>>>>> 5098e3976caa6a43035c0462045123c034362999
 }
 
 export default SearchableMovieReviewsContainer;
